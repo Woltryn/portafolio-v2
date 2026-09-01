@@ -1,0 +1,30 @@
+<section class="skills" id="habilidades">
+  <div class="container">
+    <div class="section-header" appReveal>
+      <span class="section-tag">Stack Técnico</span>
+      <h2 class="section-title">Habilidades Técnicas</h2>
+      <p class="section-subtitle">Minhas principais tecnologias e ferramentas de trabalho</p>
+    </div>
+
+    <div class="skills-grid">
+      @for (category of categories; track category.title) {
+        <div class="skill-card" appReveal>
+          <div class="skill-card-header">
+            <div class="skill-icon">
+              <i [class]="category.icon"></i>
+            </div>
+            <h3 class="skill-card-title">{{ category.title }}</h3>
+          </div>
+          <ul class="skill-list">
+            @for (skill of category.skills; track skill.name) {
+              <li class="skill-item" title="{{ skill.level }}">
+                <span class="skill-dot"></span>
+                <span class="skill-name">{{ skill.name }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+<section class="experience" id="experiencia">
+  <div class="container">
+    <div class="section-header" appReveal>
+      <span class="section-tag">Carreira</span>
+      <h2 class="section-title">Experiência Profissional</h2>
+      <p class="section-subtitle">Minha trajetória no desenvolvimento de software</p>
+    </div>
+
+    <div class="timeline">
+      @for (job of jobs; track job.company; let i = $index) {
+        <div class="timeline-item" [class.active]="job.current" appReveal>
+          <div class="timeline-marker">
+            <span class="marker-dot"></span>
+            @if (!job.current) {
+              <div class="timeline-line"></div>
+            }
+          </div>
+          <div class="timeline-content">
+            <div class="job-card">
+              <div class="job-header">
+                <div class="job-title-wrap">
+                  <h3 class="job-role">{{ job.role }}</h3>
+                  <div class="job-company">{{ job.company }}</div>
+                </div>
+                <div class="job-meta">
+                  <span class="job-period">{{ job.period }}</span>
+                  <span class="job-type">{{ job.type }} · {{ job.location }}</span>
+                </div>
+              </div>
+              <p class="job-description">{{ job.description }}</p>
+              <ul class="job-highlights">
+                @for (item of job.highlights; track item) {
+                  <li>
+                    <i class="fas fa-check"></i>
+                    {{ item }}
+                  </li>
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+<header [class.scrolled]="scrolled()">
+  <div class="header-inner">
+    <a href="#inicio" class="logo" (click)="closeMenu()">
+      <span class="logo-text">J<span class="accent">.</span></span>
+    </a>
+
+    <nav [class.open]="menuOpen()">
+      <a href="#inicio" (click)="closeMenu()">Início</a>
+      <a href="#sobre" (click)="closeMenu()">Sobre Mim</a>
+      <a href="#habilidades" (click)="closeMenu()">Habilidades</a>
+      <a href="#experiencia" (click)="closeMenu()">Experiência</a>
+      <a href="#formacao" (click)="closeMenu()">Formação</a>
+      <a href="#contato" (click)="closeMenu()">Contato</a>
+    </nav>
+
+    <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
