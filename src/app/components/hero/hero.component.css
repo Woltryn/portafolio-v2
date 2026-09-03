@@ -69,6 +69,23 @@
   font-weight: 500;
   color: var(--text-secondary);
   line-height: 1.4;
+  min-height: 1.5em;
+}
+
+.typing-text {
+  color: var(--text-secondary);
+}
+
+.typing-cursor {
+  color: var(--accent);
+  animation: blink 0.8s step-end infinite;
+  font-weight: 300;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 .hero-subtitle {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RevealDirective } from '../../reveal.directive';
+import { TiltCardDirective } from '../../tilt-card.directive';
 
 interface Job {
   company: string;
@@ -15,7 +16,7 @@ interface Job {
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [RevealDirective],
+  imports: [RevealDirective, TiltCardDirective],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css'
 })

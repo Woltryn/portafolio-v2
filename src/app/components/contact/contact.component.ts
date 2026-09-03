@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, signal, ViewChild, ElementRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RevealDirective } from '../../reveal.directive';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +11,8 @@ import { RevealDirective } from '../../reveal.directive';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
+  @ViewChild('emailForm') contactFormRef!: ElementRef<HTMLFormElement>;
+
   socials = [
     {
       name: 'LinkedIn',
@@ -37,7 +40,26 @@ export class ContactComponent {
     }
   ];
 
-  onSubmit() {
-    window.location.href = 'mailto:j.jimenez.dev7@gmail.com';
+  submitStatus = signal<'idle' | 'sending' | 'sent' | 'error'>('idle');
+
+  constructor(private emailService: EmailService) {}
+
+  async onSubmit() {
+    this.submitStatus.set('sending');
+
+    try {
+      await this.emailService.sendForm(this.contactFormRef.nativeElement);
+      this.submitStatus.set('sent');
+    } catch (error: any) {
+      console.error('EmailJS error:', error?.text || error);
+      this.submitStatus.set('error');
+    }
+  }
+
+  resetForm() {
+    if (this.contactFormRef) {
+      this.contactFormRef.nativeElement.reset();
+    }
+    this.submitStatus.set('idle');
   }
 }

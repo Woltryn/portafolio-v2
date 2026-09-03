@@ -91,6 +91,20 @@ ul {
   transform: translateY(0);
 }
 
+.section-title {
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 50%, var(--text-primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientText 4s ease infinite;
+}
+
+@keyframes gradientText {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
 .container {
   width: 100%;
   max-width: 1200px;

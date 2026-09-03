@@ -41,12 +41,18 @@
   border-color: var(--accent);
   background: var(--accent);
   box-shadow: var(--shadow-accent);
+  animation: markerPulse 2s ease-in-out infinite;
+}
+
+@keyframes markerPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(0, 212, 170, 0); }
 }
 
 .timeline-line {
   width: 3px;
   height: 100%;
-  background: var(--border);
+  background: linear-gradient(to bottom, var(--accent), var(--border));
 }
 
 .timeline-content {

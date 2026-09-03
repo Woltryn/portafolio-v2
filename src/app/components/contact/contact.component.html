@@ -37,6 +37,15 @@
           </div>
         </div>
 
+        <a href="https://wa.me/5541995401983?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20voc%C3%AA"
+           target="_blank" rel="noopener" class="whatsapp-btn">
+          <i class="fab fa-whatsapp"></i>
+          <span>
+            <strong>Fale comigo no WhatsApp</strong>
+            <small>Resposta rápida</small>
+          </span>
+        </a>
+
         <div class="social-links">
           @for (social of socials; track social.name) {
             <a [href]="social.url" target="_blank" rel="noopener" class="social-link"
@@ -47,33 +56,61 @@
         </div>
       </div>
 
-      <form class="contact-form" (ngSubmit)="onSubmit()" #contactForm="ngForm" appReveal>
-        <div class="form-group">
-          <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" placeholder="Seu nome completo"
+      <form class="contact-form" #emailForm (ngSubmit)="onSubmit()" appReveal>
+        <div class="form-group floating">
+          <input type="text" id="nome" name="from_name" placeholder=" "
                  ngModel #nome="ngModel" required />
+          <label for="nome">Nome</label>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="seu&#64;email.com"
+        <div class="form-group floating">
+          <input type="email" id="email" name="from_email" placeholder=" "
                  ngModel #email="ngModel" required email />
+          <label for="email">Email</label>
         </div>
-        <div class="form-group">
-          <label for="assunto">Assunto</label>
-          <input type="text" id="assunto" name="assunto" placeholder="Sobre o que quer falar?"
+        <div class="form-group floating">
+          <input type="text" id="assunto" name="subject" placeholder=" "
                  ngModel #assunto="ngModel" required />
+          <label for="assunto">Assunto</label>
         </div>
-        <div class="form-group">
-          <label for="mensagem">Mensagem</label>
-          <textarea id="mensagem" name="mensagem" rows="5"
-                    placeholder="Escreva sua mensagem..."
+        <div class="form-group floating">
+          <textarea id="mensagem" name="message" rows="5" placeholder=" "
                     ngModel #mensagem="ngModel" required></textarea>
+          <label for="mensagem">Mensagem</label>
         </div>
+
+        @if (submitStatus() === 'sent') {
+          <div class="form-status success">
+            <i class="fas fa-check-circle"></i>
+            <span>Mensagem enviada com sucesso! Em breve entro em contato.</span>
+            <button type="button" class="status-close" (click)="resetForm()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        }
+
+        @if (submitStatus() === 'error') {
+          <div class="form-status error">
+            <i class="fas fa-exclamation-circle"></i>
+            <span>Ocorreu um erro ao enviar. Tente novamente ou envie um email diretamente.</span>
+          </div>
+        }
+
         <button type="submit" class="btn btn-primary btn-submit"
-                [disabled]="nome.invalid || email.invalid || assunto.invalid || mensagem.invalid">
-          <i class="fas fa-paper-plane"></i>
-          Enviar Mensagem
+                [disabled]="nome.invalid || email.invalid || assunto.invalid || mensagem.invalid || submitStatus() === 'sending'">
+          @if (submitStatus() === 'sending') {
+            <i class="fas fa-spinner fa-spin"></i>
+            <span>Enviando...</span>
+          } @else {
+            <i class="fas fa-paper-plane"></i>
+            <span>Enviar Mensagem</span>
+          }
         </button>
+
+        <a href="mailto:j.jimenez.dev7@gmail.com?subject=Contato%20via%20Portf%C3%B3lio&body=Ol%C3%A1%2C%20gostaria%20de%20conversar..."
+           class="fallback-link">
+          <i class="fas fa-envelope-open-text"></i>
+          Ou envie um email diretamente
+        </a>
       </form>
     </div>
   </div>
