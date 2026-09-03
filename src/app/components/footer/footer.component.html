@@ -5,8 +5,10 @@
       <p class="footer-text">Jose A. Jimenez R. — Desenvolvedor Back-End Java</p>
       <p class="footer-copy">© {{ year }} Jose A. Jimenez Rivero. Todos os direitos reservados.</p>
     </div>
-    <button class="scroll-top" (click)="scrollToTop()" aria-label="Voltar ao topo">
-      <i class="fas fa-arrow-up"></i>
-    </button>
   </div>
+
+  <button class="scroll-top" (click)="scrollToTop()" aria-label="Voltar ao topo"
+          [class.visible]="showScrollTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 </footer>

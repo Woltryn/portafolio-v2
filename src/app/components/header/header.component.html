@@ -4,12 +4,12 @@
     </a>
 
     <nav [class.open]="menuOpen()">
-      <a href="#inicio" (click)="closeMenu()">Início</a>
-      <a href="#sobre" (click)="closeMenu()">Sobre Mim</a>
-      <a href="#habilidades" (click)="closeMenu()">Habilidades</a>
-      <a href="#experiencia" (click)="closeMenu()">Experiência</a>
-      <a href="#formacao" (click)="closeMenu()">Formação</a>
-      <a href="#contato" (click)="closeMenu()">Contato</a>
+      <a href="#inicio" [class.active]="isActive('inicio')" (click)="closeMenu()">Início</a>
+      <a href="#sobre" [class.active]="isActive('sobre')" (click)="closeMenu()">Sobre Mim</a>
+      <a href="#habilidades" [class.active]="isActive('habilidades')" (click)="closeMenu()">Habilidades</a>
+      <a href="#experiencia" [class.active]="isActive('experiencia')" (click)="closeMenu()">Experiência</a>
+      <a href="#formacao" [class.active]="isActive('formacao')" (click)="closeMenu()">Formação</a>
+      <a href="#contato" [class.active]="isActive('contato')" (click)="closeMenu()">Contato</a>
     </nav>
 
     <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen()" aria-label="Menu">

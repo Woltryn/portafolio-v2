@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-hero',
@@ -20,7 +20,15 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   private timeoutId: ReturnType<typeof setTimeout> | null = null;
   private typingSpeed = 80;
 
+  private get reducedMotion(): boolean {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
   ngAfterViewInit() {
+    if (this.reducedMotion) {
+      this.typingText.nativeElement.textContent = this.phrases[0];
+      return;
+    }
     this.type();
   }
 
