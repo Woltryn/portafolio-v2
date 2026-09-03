@@ -73,7 +73,7 @@
 
 .hero-subtitle {
   font-size: 1rem;
-  color: var(--text-muted);
+  color: var(--accent);
   letter-spacing: 0.02em;
 }
 
@@ -130,7 +130,7 @@
 
 .hero-info span {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #e8e8f0;
   display: flex;
   align-items: center;
   gap: 8px;

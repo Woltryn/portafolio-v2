@@ -29,9 +29,9 @@ export class SkillsComponent {
         { name: 'Spring Boot', level: 'Avançado' },
         { name: 'Spring Security', level: 'Avançado' },
         { name: 'Spring Data JPA', level: 'Avançado' },
-        { name: 'Angular v16', level: 'Intermediário' },
-        { name: 'JavaScript', level: 'Intermediário' },
-        { name: 'JasperReports', level: 'Intermediário' }
+        { name: 'Angular v16', level: 'Avançado' },
+        { name: 'JavaScript', level: 'Avançado' },
+        { name: 'Python', level: 'Avançado' }
       ]
     },
     {
@@ -42,7 +42,7 @@ export class SkillsComponent {
         { name: 'Mockito', level: 'Avançado' },
         { name: 'Testes Unitários', level: 'Avançado' },
         { name: 'Testes de Integração', level: 'Avançado' },
-        { name: 'SonarQube', level: 'Intermediário' }
+        { name: 'SonarQube', level: 'Avançado' }
       ]
     },
     {
@@ -61,10 +61,11 @@ export class SkillsComponent {
       icon: 'fas fa-database',
       skills: [
         { name: 'SQL', level: 'Avançado' },
-        { name: 'Oracle', level: 'Intermediário' },
+        { name: 'Oracle', level: 'Avançado' },
         { name: 'NoSQL', level: 'Intermediário' },
         { name: 'Elasticsearch', level: 'Conhecimento' },
-        { name: 'Kafka', level: 'Conhecimento' }
+        { name: 'Kafka', level: 'Avançado' },
+        { name: 'Redis', level: 'Intermediário' }
       ]
     },
     {
