@@ -23,27 +23,28 @@ interface SkillCategory {
 export class SkillsComponent {
   categories: SkillCategory[] = [
     {
-      title: 'Linguagens & Frameworks',
+      title: 'Languages & Frameworks',
       icon: 'fas fa-code',
       skills: [
         { name: 'Java 8 / 11 / 17', level: 'Avançado' },
         { name: 'Spring Boot', level: 'Avançado' },
         { name: 'Spring Security', level: 'Avançado' },
         { name: 'Spring Data JPA', level: 'Avançado' },
+        { name: 'Hibernate', level: 'Avançado' },
         { name: 'Angular v16', level: 'Avançado' },
+        { name: 'TypeScript', level: 'Avançado' },
         { name: 'JavaScript', level: 'Avançado' },
-        { name: 'Python', level: 'Avançado' }
+        { name: 'JasperReports', level: 'Avançado' }
       ]
     },
     {
-      title: 'Testes & Qualidade',
+      title: 'Testing',
       icon: 'fas fa-vial',
       skills: [
-        { name: 'JUnit', level: 'Avançado' },
+        { name: 'JUnit 5', level: 'Avançado' },
         { name: 'Mockito', level: 'Avançado' },
-        { name: 'Testes Unitários', level: 'Avançado' },
-        { name: 'Testes de Integração', level: 'Avançado' },
-        { name: 'SonarQube', level: 'Avançado' }
+        { name: 'Unit & Integration Tests', level: 'Avançado' },
+        { name: 'Test Coverage', level: 'Avançado' }
       ]
     },
     {
@@ -58,41 +59,58 @@ export class SkillsComponent {
       ]
     },
     {
-      title: 'Dados & Mensageria',
+      title: 'Data & Messaging',
       icon: 'fas fa-database',
       skills: [
         { name: 'SQL', level: 'Avançado' },
         { name: 'Oracle', level: 'Avançado' },
-        { name: 'NoSQL', level: 'Intermediário' },
+        { name: 'PostgreSQL', level: 'Avançado' },
         { name: 'Elasticsearch', level: 'Conhecimento' },
-        { name: 'Kafka', level: 'Avançado' },
-        { name: 'Redis', level: 'Intermediário' }
+        { name: 'Apache Kafka', level: 'Avançado' },
+        { name: 'NoSQL', level: 'Intermediário' }
       ]
     },
     {
-      title: 'Arquitetura & Boas Práticas',
+      title: 'Architecture',
       icon: 'fas fa-cubes',
       skills: [
-        { name: 'Microsserviços', level: 'Avançado' },
-        { name: 'Arquitetura Hexagonal', level: 'Intermediário' },
-        { name: 'APIs REST', level: 'Avançado' },
+        { name: 'Microservices', level: 'Avançado' },
+        { name: 'Hexagonal Architecture', level: 'Intermediário' },
+        { name: 'RESTful APIs', level: 'Avançado' },
         { name: 'SOLID', level: 'Avançado' },
-        { name: 'Design Patterns', level: 'Intermediário' },
-        { name: 'Clean Code', level: 'Avançado' }
+        { name: 'Clean Code', level: 'Avançado' },
+        { name: 'DDD', level: 'Intermediário' }
       ]
     },
     {
-      title: 'Ferramentas & Práticas',
+      title: 'Monitoring',
+      icon: 'fas fa-chart-line',
+      skills: [
+        { name: 'SonarQube', level: 'Avançado' },
+        { name: 'Kibana', level: 'Intermediário' },
+        { name: 'Grafana', level: 'Intermediário' }
+      ]
+    },
+    {
+      title: 'AI Tools',
+      icon: 'fas fa-robot',
+      skills: [
+        { name: 'GitHub Copilot', level: 'Avançado' },
+        { name: 'Cursor', level: 'Avançado' },
+        { name: 'ChatGPT / Claude', level: 'Avançado' }
+      ]
+    },
+    {
+      title: 'Practices',
       icon: 'fas fa-tools',
       skills: [
         { name: 'Scrum / Kanban', level: 'Avançado' },
-        { name: 'GitHub Copilot', level: 'Avançado' },
-        { name: 'Cursor', level: 'Avançado' },
-        { name: 'ChatGPT / Claude', level: 'Avançado' },
+        { name: 'OOP', level: 'Avançado' },
+        { name: 'Design Patterns', level: 'Intermediário' },
         { name: 'Swagger UI', level: 'Avançado' },
         { name: 'Postman', level: 'Avançado' },
-        { name: 'Kibana / Grafana', level: 'Intermediário' },
-        { name: 'Jira / Confluence', level: 'Avançado' }
+        { name: 'Confluence', level: 'Avançado' },
+        { name: 'Jira', level: 'Avançado' }
       ]
     }
   ];

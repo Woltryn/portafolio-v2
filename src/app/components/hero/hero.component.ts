@@ -10,9 +10,9 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   @ViewChild('typingText') typingText!: ElementRef<HTMLSpanElement>;
 
   private phrases = [
-    'Desenvolvedor Back-End Java',
-    'Spring Boot · APIs REST',
-    'Microsserviços · Cloud'
+    'Desenvolvedor Backend Java',
+    'Spring Boot · RESTful APIs',
+    'Microservices · Cloud'
   ];
   private phraseIndex = 0;
   private charIndex = 0;

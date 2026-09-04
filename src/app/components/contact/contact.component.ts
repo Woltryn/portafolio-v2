@@ -16,7 +16,7 @@ export class ContactComponent {
   socials = [
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/jose-jimenez-04a0aa22a/',
+      url: 'https://www.linkedin.com/in/jos%C3%A9-a-jimen%C3%A9z-04a0aa22a/',
       icon: 'fab fa-linkedin-in',
       theme: '#0077b5'
     },
