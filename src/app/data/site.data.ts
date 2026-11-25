@@ -52,5 +52,8 @@ export const WHATSAPP_MESSAGE = 'Olá, gostaria de falar com você';
 export const WHATSAPP_URL =
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
-export const CV_URL =
-  'https://drive.google.com/file/d/1b_lwmM3TSbXGY-uJ85qiMOZuH9YX9FzP/view?usp=sharing';
+/** ID del CV compartido en Google Drive. */
+const CV_FILE_ID = '1DhJ11YFt6GNQr0QHQclHGWY5bCbSVg0N';
+
+/** Descarga directa del CV, en lugar de abrir la vista previa de Drive. */
+export const CV_URL = `https://drive.google.com/uc?export=download&id=${CV_FILE_ID}`;
