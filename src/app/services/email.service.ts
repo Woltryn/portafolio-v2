@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import emailjs from '@emailjs/browser';
+import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class EmailService {
     emailjs.init(this.PUBLIC_KEY);
   }
 
-  async sendForm(form: HTMLFormElement): Promise<any> {
+  async sendForm(form: HTMLFormElement): Promise<EmailJSResponseStatus> {
     return emailjs.sendForm(this.SERVICE_ID, this.TEMPLATE_ID, form);
   }
 }

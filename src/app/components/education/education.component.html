@@ -9,14 +9,14 @@
       @for (item of education; track item.course; let i = $index) {
         <div class="education-card" appScrollReveal="zoom" [revealDelay]="i * 65" appTiltCard>
           <div class="education-icon">
-            <i class="fas fa-graduation-cap"></i>
+            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
           </div>
           <div class="education-content">
             <div class="education-type">{{ item.type }}</div>
             <h3 class="education-course">{{ item.course }}</h3>
             <p class="education-school">{{ item.school }}</p>
             <span class="education-period">
-              <i class="far fa-calendar-alt"></i>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
               {{ item.period }}
             </span>
           </div>
@@ -24,23 +24,23 @@
       }
     </div>
 
-    <div class="section-header" appReveal style="margin-top: 3rem;">
+    <div class="section-header" appScrollReveal="blur" style="margin-top: 3rem;">
       <span class="section-tag">Continuidade</span>
       <h2 class="section-title">Formação em Andamento</h2>
     </div>
 
     <div class="education-grid">
       @for (study of ongoingStudies; track study.title) {
-        <div class="education-card" appReveal appTiltCard>
+        <div class="education-card" appScrollReveal="zoom" appTiltCard>
           <div class="education-icon" style="background: rgba(0, 212, 170, 0.15); color: #00d4aa;">
-            <i class="fas fa-book-open"></i>
+            <i class="fas fa-book-open" aria-hidden="true"></i>
           </div>
           <div class="education-content">
             <div class="education-type" style="color: #00d4aa;">Estudo Autodidata</div>
             <h3 class="education-course">{{ study.title }}</h3>
             <p class="education-school">{{ study.description }}</p>
             <span class="education-period">
-              <i class="far fa-calendar-alt"></i>
+              <i class="far fa-calendar-alt" aria-hidden="true"></i>
               {{ study.period }}
             </span>
           </div>

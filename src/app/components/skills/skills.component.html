@@ -11,7 +11,7 @@
         <div class="skill-card" appScrollReveal="fade-up" [revealDelay]="i * 65" appTiltCard>
           <div class="skill-card-header">
             <div class="skill-icon">
-              <i [class]="category.icon"></i>
+              <i [class]="category.icon" aria-hidden="true"></i>
             </div>
             <h3 class="skill-card-title">{{ category.title }}</h3>
           </div>

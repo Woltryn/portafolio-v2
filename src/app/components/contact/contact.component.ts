@@ -34,8 +34,14 @@ export class ContactComponent {
     try {
       await this.emailService.sendForm(this.contactFormRef.nativeElement);
       this.submitStatus.set('sent');
-    } catch (error: any) {
-      console.error('EmailJS error:', error?.text || error);
+    } catch (error: unknown) {
+      const detail =
+        error instanceof Error
+          ? error.message
+          : error && typeof error === 'object' && 'text' in error
+            ? String((error as { text: unknown }).text)
+            : String(error);
+      console.error('EmailJS error:', detail);
       this.submitStatus.set('error');
     }
   }
