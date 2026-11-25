@@ -1,13 +1,13 @@
 <section class="contact" id="contato">
   <div class="container">
-    <div class="section-header" appReveal>
+    <div class="section-header" appScrollReveal="blur">
       <span class="section-tag">Contato</span>
       <h2 class="section-title">Vamos Trabalhar Juntos</h2>
       <p class="section-subtitle">Tem um projeto em mente ou quer conversar sobre oportunidades? Fale comigo.</p>
     </div>
 
     <div class="contact-grid">
-      <div class="contact-info" appReveal>
+      <div class="contact-info" appScrollReveal="slide-left">
         <h3 class="contact-title">Informações de Contato</h3>
         <div class="contact-item">
           <div class="contact-icon">
@@ -15,7 +15,7 @@
           </div>
           <div>
             <span class="contact-label">Email</span>
-            <a href="mailto:j.jimenez.dev7@gmail.com" class="contact-value">j.jimenez.dev7&#64;gmail.com</a>
+            <a [href]="'mailto:' + contactEmail" class="contact-value">{{ contactEmail }}</a>
           </div>
         </div>
         <div class="contact-item">
@@ -24,7 +24,7 @@
           </div>
           <div>
             <span class="contact-label">Telefone</span>
-            <a href="tel:+5541995401983" class="contact-value">+55 41 99540-1983</a>
+            <a [href]="contactPhoneHref" class="contact-value">{{ contactPhone }}</a>
           </div>
         </div>
         <div class="contact-item">
@@ -37,18 +37,10 @@
           </div>
         </div>
 
-        <a href="https://wa.me/5541995401983?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20voc%C3%AA"
-           target="_blank" rel="noopener" class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i>
-          <span>
-            <strong>Fale comigo no WhatsApp</strong>
-            <small>Resposta rápida</small>
-          </span>
-        </a>
-
         <div class="social-links">
-          @for (social of socials; track social.name) {
+          @for (social of socials; track social.name; let idx = $index) {
             <a [href]="social.url" target="_blank" rel="noopener" class="social-link"
+               appScrollReveal="zoom" [revealDelay]="idx * 65"
                [attr.aria-label]="social.name">
               <i [class]="social.icon"></i>
             </a>
@@ -56,7 +48,7 @@
         </div>
       </div>
 
-      <form class="contact-form" #emailForm (ngSubmit)="onSubmit()" appReveal>
+      <form class="contact-form" #emailForm (ngSubmit)="onSubmit()" appScrollReveal="slide-right">
         <div class="form-group floating">
           <input type="text" id="nome" name="from_name" placeholder=" "
                  ngModel #nome="ngModel" required />

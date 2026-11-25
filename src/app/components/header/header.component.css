@@ -1,81 +1,49 @@
 header {
-
   position: fixed;
-
   top: 0;
-
   left: 0;
-
   right: 0;
-
   z-index: 1000;
-
   padding: 20px 0;
-
   transition: var(--transition);
-
   background: transparent;
-
 }
 
 header.scrolled {
-
   background: rgba(10, 10, 20, 0.92);
-
   backdrop-filter: blur(12px);
-
   -webkit-backdrop-filter: blur(12px);
-
   padding: 12px 0;
-
   border-bottom: 1px solid var(--border);
-
 }
 
 .header-inner {
-
-  max-width: 1200px;
-
+  max-width: var(--container-max);
   margin: 0 auto;
-
-  padding: 0 24px;
-
+  padding: 0 var(--container-pad);
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
 }
 
-
+.logo {
+  display: flex;
+  align-items: center;
+}
 
 .logo::before {
-
   content: "J";
-
   width: 38px;
-
   height: 38px;
-
   display: flex;
-
   align-items: center;
-
   justify-content: center;
-
   font-family: Arial, sans-serif;
-
   font-size: 2rem;
-
   font-weight: 900;
-
   line-height: 1;
-
   color: #ffffff;
-
   border-radius: 10px 10px 14px 14px;
-
   background: linear-gradient(
     135deg,
     #00f5ff 0%,
@@ -83,303 +51,276 @@ header.scrolled {
     #a855f7 70%,
     #08b72b 100%
   );
-
   box-shadow:
     0 0 8px rgba(0, 245, 255, 0.7),
     0 0 20px rgba(99, 102, 241, 0.6),
     0 0 35px rgba(168, 85, 247, 0.45),
     inset 2px 2px 5px rgba(255, 255, 255, 0.55),
     inset -3px -4px 7px rgba(0, 0, 0, 0.35);
-
   transform-style: preserve-3d;
-
   animation: logoJ3D 4s ease-in-out infinite;
-
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-
 }
 
 .logo::after {
-
   content: "";
-
   position: absolute;
-
   width: 34px;
-
   height: 34px;
-
   margin-left: 2px;
-
   border-radius: 10px;
-
   background: linear-gradient(
     135deg,
     #00f5ff,
     #7c3aed,
     #ff2bd6
   );
-
   filter: blur(12px);
-
   opacity: 0.45;
-
   z-index: -1;
-
   animation: logoGlow 3s ease-in-out infinite;
-
 }
 
 .logo:hover::before {
-
   transform:
     rotateX(-8deg)
     rotateY(25deg)
     translateZ(10px)
     scale(1.1);
-
   box-shadow:
     0 0 12px rgba(0, 245, 255, 0.9),
     0 0 28px rgba(99, 102, 241, 0.8),
     0 0 50px rgba(255, 43, 214, 0.6),
     inset 2px 2px 6px rgba(255, 255, 255, 0.65),
     inset -3px -4px 8px rgba(0, 0, 0, 0.4);
-
 }
 
 nav {
-
   display: flex;
-
   align-items: center;
-
-  gap: 8px;
-
+  gap: 6px;
 }
 
+/* Spotlight inferior: iluminación ambiental (::before) + línea animada
+   (::after). Se resuelve 100 % en CSS: sin JS, sin fondos sólidos y sin
+   alterar el tamaño ni la distribución del enlace. */
 nav a {
-
-  padding: 8px 16px;
-
-  font-size: 1rem;
-
+  position: relative;
+  isolation: isolate;
+  padding: 9px 15px;
+  font-size: var(--fs-small);
   font-weight: 500;
-
-  color: var(--text-secondary); 
-
+  color: var(--nav-ink, var(--text-secondary));
   border-radius: var(--radius-sm);
-
-  transition: var(--transition);
-
   letter-spacing: 0.01em;
 
+  --nav-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-duration: 330ms;
+  --nav-hover-ink: #ffffff;
+  --nav-glow-alpha: 0.2;
+
+  transition:
+    color var(--nav-duration) var(--nav-ease),
+    text-shadow var(--nav-duration) var(--nav-ease);
 }
 
-nav a:hover {
+/* Resplandor radial turquesa que nace en la base del texto y sube. */
+nav a::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -1px;
+  height: 72%;
+  border-radius: 999px;
+  background: radial-gradient(
+    ellipse 75% 100% at 50% 100%,
+    rgba(0, 214, 188, var(--nav-glow-alpha)) 0%,
+    rgba(0, 214, 188, 0.08) 42%,
+    transparent 78%
+  );
+  filter: blur(9px);
+  opacity: var(--nav-glow-opacity, 0);
+  transform: translateY(5px);
+  transition:
+    opacity var(--nav-duration) var(--nav-ease),
+    transform var(--nav-duration) var(--nav-ease);
+  pointer-events: none;
+  z-index: -1;
+}
 
-  color: var(--accent);
+/* Línea de 2 px y 76 % de ancho: cian → índigo → violeta. */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #00f5ff 0%, #6366f1 50%, #a855f7 100%);
+  box-shadow: 0 0 9px rgba(0, 245, 255, 0.45);
+  transform: scaleX(var(--nav-line-scale, 0));
+  transform-origin: center;
+  opacity: var(--nav-line-opacity, 0.95);
+  transition: transform var(--nav-duration) var(--nav-ease);
+  pointer-events: none;
+  z-index: -1;
+}
 
-  background: var(--accent-glow);
+nav a:hover,
+nav a:focus-visible {
+  color: var(--nav-hover-ink);
+  text-shadow:
+    0 0 8px rgba(0, 245, 255, 0.32),
+    0 0 16px rgba(168, 85, 247, 0.2);
+}
 
+nav a:hover::before,
+nav a:focus-visible::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+nav a:hover::after,
+nav a:focus-visible::after {
+  transform: scaleX(1);
+  opacity: 0.95;
+}
+
+/* Sección activa (hash de la URL): mismo lenguaje visual a intensidad
+   reducida, también sin JavaScript. :host-context evita que la
+   encapsulación de Angular añada [_ngcontent] a <body>. */
+:host-context(body:has(#inicio:target)) nav a[href="#inicio"],
+:host-context(body:has(#sobre:target)) nav a[href="#sobre"],
+:host-context(body:has(#habilidades:target)) nav a[href="#habilidades"],
+:host-context(body:has(#experiencia:target)) nav a[href="#experiencia"],
+:host-context(body:has(#formacao:target)) nav a[href="#formacao"],
+:host-context(body:has(#contato:target)) nav a[href="#contato"] {
+  --nav-ink: #dbe3f2;
+  --nav-glow-opacity: 0.45;
+  --nav-line-scale: 1;
+  --nav-line-opacity: 0.32;
+  text-shadow: 0 0 6px rgba(0, 214, 188, 0.16);
+}
+
+/* Tema claro: el hover sigue al token de texto del tema, por lo que el
+   efecto conserva el contraste cuando se añada una paleta clara. */
+@media (prefers-color-scheme: light) {
+  nav a {
+    --nav-hover-ink: var(--text-primary);
+    --nav-glow-alpha: 0.16;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  nav a,
+  nav a::before,
+  nav a::after {
+    transition: none;
+  }
 }
 
 .hamburger {
-
   display: none;
-
   flex-direction: column;
-
   justify-content: center;
-
   align-items: center;
-
   gap: 5px;
-
   width: 40px;
-
   height: 40px;
-
   background: none;
-
   border: none;
-
   cursor: pointer;
-
   padding: 8px;
-
   border-radius: var(--radius-sm);
-
   transition: var(--transition);
-
 }
 
 .hamburger:hover {
-
   background: var(--accent-glow);
-
 }
 
 .hamburger span {
-
   display: block;
-
   width: 22px;
-
   height: 2px;
-
   background: var(--text-primary);
-
   border-radius: 2px;
-
   transition: var(--transition);
-
 }
 
 .hamburger.active span:nth-child(1) {
-
   transform: rotate(45deg) translate(5px, 5px);
-
 }
 
 .hamburger.active span:nth-child(2) {
-
   opacity: 0;
-
 }
 
 .hamburger.active span:nth-child(3) {
-
   transform: rotate(-45deg) translate(5px, -5px);
-
 }
 
 @keyframes logoJ3D {
-
   0% {
-
-    transform:
-      rotateX(8deg)
-      rotateY(-18deg)
-      translateY(0)
-      translateZ(0);
-
+    transform: rotateX(8deg) rotateY(-18deg) translateY(0) translateZ(0);
   }
-
   25% {
-
-    transform:
-      rotateX(-4deg)
-      rotateY(8deg)
-      translateY(-2px)
-      translateZ(4px);
-
+    transform: rotateX(-4deg) rotateY(8deg) translateY(-2px) translateZ(4px);
   }
-
   50% {
-
-    transform:
-      rotateX(8deg)
-      rotateY(18deg)
-      translateY(-4px)
-      translateZ(7px);
-
+    transform: rotateX(8deg) rotateY(18deg) translateY(-4px) translateZ(7px);
   }
-
   75% {
-
-    transform:
-      rotateX(-5deg)
-      rotateY(-8deg)
-      translateY(-2px)
-      translateZ(4px);
-
+    transform: rotateX(-5deg) rotateY(-8deg) translateY(-2px) translateZ(4px);
   }
-
   100% {
-
-    transform:
-      rotateX(8deg)
-      rotateY(-18deg)
-      translateY(0)
-      translateZ(0);
-
+    transform: rotateX(8deg) rotateY(-18deg) translateY(0) translateZ(0);
   }
-
 }
 
 @keyframes logoGlow {
-
-  0%,
-  100% {
-
+  0%, 100% {
     transform: scale(0.9);
-
     opacity: 0.3;
-
   }
-
   50% {
-
     transform: scale(1.25);
-
     opacity: 0.65;
-
   }
-
 }
 
 @media (max-width: 768px) {
-
   .hamburger {
-
     display: flex;
-
   }
 
   nav {
-
     position: fixed;
-
     top: 0;
-
     right: -100%;
-
-    width: 280px;
-
+    width: min(300px, 86vw);
     height: 100vh;
-
+    height: 100dvh;
     background: var(--bg-secondary);
-
     flex-direction: column;
-
     align-items: flex-start;
-
-    padding: 80px 24px 24px;
-
+    padding: 88px 24px 32px;
     gap: 4px;
-
     transition: var(--transition);
-
     border-left: 1px solid var(--border);
-
     box-shadow: var(--shadow-lg);
-
+    overflow-y: auto;
   }
 
   nav.open {
-
     right: 0;
-
   }
 
   nav a {
-
     width: 100%;
-
-    padding: 12px 16px;
-
-    font-size: 1rem;
-
+    padding: 13px 16px;
+    font-size: var(--fs-body-sm);
   }
-
 }

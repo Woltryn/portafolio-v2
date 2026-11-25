@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
-import { RevealDirective } from '../../reveal.directive';
+import { ScrollRevealDirective } from '../../scroll-reveal.directive';
 import { TiltCardDirective } from '../../tilt-card.directive';
+
+interface ProjectLink {
+  title: string;
+  subtitle: string;
+  url: string;
+}
 
 interface Job {
   company: string;
@@ -8,20 +14,73 @@ interface Job {
   period: string;
   location: string;
   type: string;
+  tag?: string;
   description: string;
   highlights: string[];
+  highlightsTitle?: string;
+  technologies?: string[];
+  technologiesTitle?: string;
+  project?: ProjectLink;
   current?: boolean;
 }
 
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [RevealDirective, TiltCardDirective],
+  imports: [ScrollRevealDirective, TiltCardDirective],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.css'
 })
 export class ExperienceComponent {
   jobs: Job[] = [
+    {
+      company: 'Studio Army — Projeto Freelance',
+      role: 'Desenvolvedor Full Stack Java',
+      period: '2026',
+      location: 'Curitiba, Brasil',
+      type: '',
+      tag: 'Projeto comercial',
+      description: 'Desenvolvimento de uma plataforma web completa para digitalização e gestão de um salão de beleza, abrangendo desde a arquitetura de software e implementação das regras de negócio até a configuração da infraestrutura em nuvem e implantação em ambiente de produção.',
+      highlightsTitle: 'Principais responsabilidades',
+      highlights: [
+        'Desenvolvimento de APIs REST com Java e Spring Boot.',
+        'Autenticação e autorização com Spring Security e JWT.',
+        'Modelagem e integração com PostgreSQL e Redis.',
+        'Sistema de agendamento com controle de disponibilidade e prevenção de conflitos de horários.',
+        'Desenvolvimento de interfaces responsivas com Angular e TypeScript.',
+        'Painéis de gerenciamento para clientes, colaboradores e administradores.',
+        'Configuração de infraestrutura em nuvem e deploy utilizando AWS, Amazon EC2 e Amazon S3.',
+        'Desenvolvimento de scripts auxiliares em Python.',
+        'Aplicação de boas práticas de segurança, desempenho e arquitetura de software.'
+      ],
+      technologiesTitle: 'Tecnologias utilizadas',
+      technologies: [
+        'Java',
+        'Spring Boot',
+        'Spring Security',
+        'Spring Data JPA',
+        'Angular',
+        'TypeScript',
+        'PostgreSQL',
+        'Redis',
+        'AWS',
+        'Amazon EC2',
+        'Amazon S3',
+        'Python',
+        'JWT',
+        'Lombok',
+        'REST API',
+        'Maven',
+        'Git',
+        'HTML5',
+        'SCSS'
+      ],
+      project: {
+        title: 'Visualizar projeto',
+        subtitle: 'Acessar aplicação web',
+        url: 'https://studioarmy.com.br/'
+      }
+    },
     {
       company: 'FDS, A DXC Technology Company',
       role: 'Desenvolvedor Back-End Java',

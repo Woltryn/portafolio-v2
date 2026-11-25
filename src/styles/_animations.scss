@@ -1,0 +1,136 @@
+// ==========================================================================
+// Scroll reveal system
+// Shared timing, distances and easing for every progressive entrance.
+// ==========================================================================
+
+$sr-duration: 800ms;
+$sr-ease: cubic-bezier(0.22, 1, 0.36, 1);
+$sr-distance: 35px;
+$sr-distance-soft: 15px;
+$sr-blur: 8px;
+$sr-zoom: 0.95;
+
+// Initial state: the directive adds the variant class and, later, the
+// visible class. Content stays hidden until it enters the viewport.
+[appScrollReveal],
+.sr {
+  opacity: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+[appScrollReveal].sr--visible,
+.sr--visible {
+  opacity: 1;
+  animation-duration: $sr-duration;
+  animation-timing-function: $sr-ease;
+  animation-delay: var(--sr-delay, 0ms);
+  animation-fill-mode: backwards;
+}
+
+// Variants -----------------------------------------------------------------
+.sr--fade-up.sr--visible {
+  animation-name: sr-fade-up;
+}
+
+.sr--blur.sr--visible {
+  animation-name: sr-blur;
+}
+
+.sr--slide-left.sr--visible {
+  animation-name: sr-slide-left;
+}
+
+.sr--slide-right.sr--visible {
+  animation-name: sr-slide-right;
+}
+
+.sr--zoom.sr--visible {
+  animation-name: sr-zoom;
+}
+
+// Keyframes ----------------------------------------------------------------
+@keyframes sr-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, $sr-distance, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sr-blur {
+  from {
+    opacity: 0;
+    filter: blur($sr-blur);
+    transform: translate3d(0, $sr-distance-soft, 0);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sr-slide-left {
+  from {
+    opacity: 0;
+    transform: translate3d(-$sr-distance, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sr-slide-right {
+  from {
+    opacity: 0;
+    transform: translate3d($sr-distance, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes sr-zoom {
+  from {
+    opacity: 0;
+    transform: scale($sr-zoom);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// Accessibility ------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [appScrollReveal],
+  [appScrollReveal].sr--visible,
+  .sr {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

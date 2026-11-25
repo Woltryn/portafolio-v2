@@ -1,0 +1,257 @@
+:host {
+  --float-offset: clamp(16px, 3vw, 28px);
+  --wa-size: clamp(62px, 6.5vw, 74px);
+}
+
+.floating-actions {
+  position: fixed;
+  right: var(--float-offset);
+  bottom: calc(var(--float-offset) + env(safe-area-inset-bottom, 0px));
+  z-index: 95;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(64px, 6.8vw, 76px);
+  pointer-events: none;
+}
+
+.floating-actions > * {
+  pointer-events: auto;
+}
+
+/* ==========================================================================
+   Back to top — shape, ring and motion from the Studio Army component,
+   recoloured to the portfolio accent palette.
+   ========================================================================== */
+
+.scroll-top {
+  position: relative;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 212, 170, 0.35);
+}
+
+.scroll-top.visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top:hover {
+  transform: translateY(-3px);
+  background: var(--accent-light);
+  box-shadow: 0 10px 26px rgba(0, 212, 170, 0.45);
+}
+
+.scroll-top:focus-visible {
+  opacity: 1;
+  visibility: visible;
+  outline: 3px solid rgba(0, 212, 170, 0.55);
+  outline-offset: 3px;
+}
+
+.scroll-top:active {
+  transform: translateY(-1px) scale(0.96);
+}
+
+.anel {
+  position: absolute;
+  inset: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.anel-fundo {
+  fill: none;
+  stroke: rgba(0, 212, 170, 0.22);
+  stroke-width: 3;
+}
+
+.anel-progresso {
+  fill: none;
+  stroke: #9dfbe4;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 138.23;
+  transition: stroke-dashoffset 0.15s linear;
+}
+
+.seta {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   WhatsApp — circular button, floating 3D animation and pulse from Studio
+   Army, using the WhatsApp green and the portfolio accent instead of purple.
+   ========================================================================== */
+
+.whatsapp-wrap {
+  position: relative;
+  width: var(--wa-size);
+  height: var(--wa-size);
+  perspective: 240px;
+  animation: wa-flutuar-3d 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.whatsapp-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -7px;
+  left: 50%;
+  width: calc(100% + 14px);
+  height: calc(100% + 14px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(0, 212, 170, 0.5), transparent 55%),
+    radial-gradient(circle at 70% 75%, rgba(37, 211, 102, 0.55), transparent 55%);
+  filter: blur(7px);
+  opacity: 0.5;
+  z-index: -1;
+  animation: wa-pulso-neon 4s ease-in-out infinite;
+}
+
+@keyframes wa-flutuar-3d {
+  0%, 100% { transform: translateY(0) rotateX(4deg) rotateY(-4deg); }
+  25%      { transform: translateY(-6px) rotateX(-3deg) rotateY(-2deg); }
+  50%      { transform: translateY(-10px) rotateX(2deg) rotateY(5deg); }
+  75%      { transform: translateY(-5px) rotateX(5deg) rotateY(2deg); }
+}
+
+@keyframes wa-pulso-neon {
+  0%, 100% { opacity: 0.35; transform: translateX(-50%) scale(0.94); }
+  50%      { opacity: 0.85; transform: translateX(-50%) scale(1.05); }
+}
+
+.whatsapp-float {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  position: relative;
+  color: #ffffff;
+  background: linear-gradient(135deg, #7dffb8 0%, #25d366 38%, #00d4aa 74%, #0f9d58 100%);
+  box-shadow:
+    0 0 8px rgba(37, 211, 102, 0.65),
+    0 0 20px rgba(0, 212, 170, 0.5),
+    0 0 35px rgba(37, 211, 102, 0.35),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.5),
+    inset -3px -4px 7px rgba(0, 0, 0, 0.32);
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.whatsapp-float svg {
+  width: 58%;
+  height: 58%;
+  position: relative;
+  z-index: 1;
+}
+
+.whatsapp-float .wa-bolha {
+  fill: #ffffff;
+}
+
+.whatsapp-float .wa-fone {
+  fill: #22b35b;
+}
+
+.whatsapp-float::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 220deg,
+    rgba(157, 251, 228, 0.4),
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(0, 212, 170, 0.28) 48%,
+    rgba(255, 255, 255, 0) 62%,
+    rgba(37, 211, 102, 0.32) 82%,
+    rgba(157, 251, 228, 0.4)
+  );
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.whatsapp-float:hover,
+.whatsapp-float:focus-visible {
+  transform: scale(1.1);
+  filter: brightness(1.1) saturate(1.06);
+  box-shadow:
+    0 0 10px rgba(37, 211, 102, 0.85),
+    0 0 26px rgba(0, 212, 170, 0.7),
+    0 0 48px rgba(37, 211, 102, 0.45),
+    0 10px 26px rgba(0, 0, 0, 0.18),
+    inset 2px 2px 5px rgba(255, 255, 255, 0.6),
+    inset -3px -4px 7px rgba(0, 0, 0, 0.3);
+}
+
+.whatsapp-wrap:has(.whatsapp-float:hover)::after {
+  opacity: 0.9;
+}
+
+.whatsapp-float:active {
+  transform: scale(1.03);
+  filter: brightness(0.98);
+}
+
+.whatsapp-float:focus-visible {
+  outline: 3px solid rgba(37, 211, 102, 0.55);
+  outline-offset: 3px;
+}
+
+@media (max-width: 480px) {
+  :host {
+    --float-offset: 12px;
+  }
+
+  .floating-actions {
+    gap: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-wrap,
+  .whatsapp-wrap::after {
+    animation: none;
+  }
+
+  .scroll-top {
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+  }
+
+  .anel-progresso {
+    transition: none;
+  }
+
+  .whatsapp-float {
+    transition: none;
+  }
+
+  .whatsapp-wrap::after {
+    opacity: 0.55;
+  }
+}

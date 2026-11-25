@@ -1,13 +1,13 @@
 <section class="education" id="formacao">
   <div class="container">
-    <div class="section-header" appReveal>
+    <div class="section-header" appScrollReveal="blur">
       <span class="section-tag">Educação</span>
       <h2 class="section-title">Formação Acadêmica</h2>
     </div>
 
     <div class="education-grid">
-      @for (item of education; track item.course) {
-        <div class="education-card" appReveal appTiltCard>
+      @for (item of education; track item.course; let i = $index) {
+        <div class="education-card" appScrollReveal="zoom" [revealDelay]="i * 65" appTiltCard>
           <div class="education-icon">
             <i class="fas fa-graduation-cap"></i>
           </div>

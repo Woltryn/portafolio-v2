@@ -1,6 +1,6 @@
 <section class="experience" id="experiencia">
   <div class="container">
-    <div class="section-header" appReveal>
+    <div class="section-header" appScrollReveal="blur">
       <span class="section-tag">Carreira</span>
       <h2 class="section-title">Experiência Profissional</h2>
       <p class="section-subtitle">Minha trajetória no desenvolvimento de software</p>
@@ -8,7 +8,7 @@
 
     <div class="timeline">
       @for (job of jobs; track job.company; let i = $index) {
-        <div class="timeline-item" [class.active]="job.current" appReveal>
+        <div class="timeline-item" [class.active]="job.current" appScrollReveal="fade-up" [revealDelay]="i * 65">
           <div class="timeline-marker">
             <span class="marker-dot"></span>
             @if (!job.current) {
@@ -20,14 +20,28 @@
               <div class="job-header">
                 <div class="job-title-wrap">
                   <h3 class="job-role">{{ job.role }}</h3>
-                  <div class="job-company">{{ job.company }}</div>
+                  <div class="job-company">
+                    <span>{{ job.company }}</span>
+                    @if (job.tag) {
+                      <span class="job-tag">{{ job.tag }}</span>
+                    }
+                  </div>
                 </div>
                 <div class="job-meta">
                   <span class="job-period">{{ job.period }}</span>
-                  <span class="job-type">{{ job.type }} · {{ job.location }}</span>
+                  <span class="job-type">
+                    @if (job.type) {
+                      {{ job.type }} ·
+                    }
+                    {{ job.location }}
+                  </span>
                 </div>
               </div>
               <p class="job-description">{{ job.description }}</p>
+
+              @if (job.highlightsTitle) {
+                <h4 class="job-section-title">{{ job.highlightsTitle }}</h4>
+              }
               <ul class="job-highlights">
                 @for (item of job.highlights; track item) {
                   <li>
@@ -36,6 +50,36 @@
                   </li>
                 }
               </ul>
+
+              @if (job.technologies?.length) {
+                <div class="job-divider"></div>
+                <h4 class="job-section-title">{{ job.technologiesTitle }}</h4>
+                <ul class="tech-tags">
+                  @for (tech of job.technologies; track tech; let idx = $index) {
+                    <li class="tech-tag" appScrollReveal="fade-up" [revealDelay]="idx * 65">{{ tech }}</li>
+                  }
+                </ul>
+              }
+
+              @if (job.project) {
+                <div class="job-divider"></div>
+                <a class="project-link"
+                   [href]="job.project.url"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   appScrollReveal="fade-up"
+                   [revealDelay]="300"
+                   [attr.aria-label]="job.project.title + ' — ' + job.project.subtitle">
+                  <span class="project-icon">
+                    <i class="fas fa-globe"></i>
+                  </span>
+                  <span class="project-text">
+                    <span class="project-title">{{ job.project.title }}</span>
+                    <span class="project-subtitle">{{ job.project.subtitle }}</span>
+                  </span>
+                  <i class="fas fa-arrow-up-right-from-square project-external"></i>
+                </a>
+              }
             </div>
           </div>
         </div>

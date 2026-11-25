@@ -4,17 +4,18 @@
 
 .education-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 1.8vw, 24px);
 }
 
 .education-card {
   display: flex;
-  gap: 20px;
+  gap: clamp(16px, 1.8vw, 22px);
+  min-width: 0;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 28px;
+  padding: var(--space-card);
   transition: var(--transition);
 }
 
@@ -25,52 +26,58 @@
 }
 
 .education-icon {
-  width: 48px;
-  height: 48px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--radius-md);
   background: var(--accent-glow);
   color: var(--accent);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   flex-shrink: 0;
 }
 
+.education-content {
+  min-width: 0;
+}
+
 .education-type {
-  font-size: 0.7rem;
+  font-size: var(--fs-overline);
   font-weight: 600;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 4px;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
 }
 
 .education-course {
-  font-size: 1rem;
+  font-size: clamp(1.125rem, 1.5vw, 1.375rem);
   font-weight: 600;
   color: var(--text-primary);
   line-height: 1.4;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  text-wrap: pretty;
 }
 
 .education-school {
-  font-size: 0.875rem;
+  font-size: var(--fs-body-sm);
   color: var(--text-secondary);
-  margin-bottom: 8px;
+  line-height: 1.6;
+  margin-bottom: 10px;
 }
 
 .education-period {
-  font-size: 0.8rem;
+  font-size: var(--fs-small);
   color: var(--text-muted);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
 }
 
 .education-period i {
   color: var(--accent);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 @media (max-width: 768px) {

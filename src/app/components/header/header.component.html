@@ -1,18 +1,21 @@
 <header [class.scrolled]="scrolled()">
   <div class="header-inner">
-    <a href="#inicio" class="logo" (click)="closeMenu()">
+    <a href="#inicio" class="logo" (click)="closeMenu()" aria-label="Jose A. Jimenez R. — Início">
     </a>
 
-    <nav [class.open]="menuOpen()">
-      <a href="#inicio" (click)="closeMenu()">Início</a>
-      <a href="#sobre" (click)="closeMenu()">Sobre Mim</a>
-      <a href="#habilidades" (click)="closeMenu()">Habilidades</a>
-      <a href="#experiencia" (click)="closeMenu()">Experiência</a>
-      <a href="#formacao" (click)="closeMenu()">Formação</a>
-      <a href="#contato" (click)="closeMenu()">Contato</a>
+    <nav id="primary-navigation" [class.open]="menuOpen()" aria-label="Navegação principal">
+      @for (link of navLinks; track link.href) {
+        <a [href]="link.href" (click)="closeMenu()">{{ link.label }}</a>
+      }
     </nav>
 
-    <button class="hamburger" (click)="toggleMenu()" [class.active]="menuOpen()" aria-label="Menu">
+    <button class="hamburger"
+            type="button"
+            (click)="toggleMenu()"
+            [class.active]="menuOpen()"
+            [attr.aria-expanded]="menuOpen()"
+            aria-controls="primary-navigation"
+            aria-label="Menu">
       <span></span>
       <span></span>
       <span></span>

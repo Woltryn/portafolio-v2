@@ -1,0 +1,35 @@
+<div class="floating-actions">
+  <button type="button"
+          class="scroll-top"
+          [class.visivel]="visible"
+          (click)="scrollToTop()"
+          aria-label="Voltar ao topo"
+          title="Voltar ao topo">
+    <svg class="anel" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+      <circle class="anel-fundo" cx="24" cy="24" r="22" />
+      <circle class="anel-progresso" cx="24" cy="24" r="22"
+              [style.stroke-dashoffset]="ringOffset" />
+    </svg>
+    <svg class="seta" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M12 19V5M5 12l7-7 7 7"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.4"
+            stroke-linecap="round"
+            stroke-linejoin="round" />
+    </svg>
+  </button>
+
+  <div class="whatsapp-wrap">
+    <a class="whatsapp-float"
+       [href]="whatsappUrl"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Falar comigo no WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path class="wa-bolha" d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.892c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.447h.006c6.585 0 11.946-5.336 11.949-11.896 0-3.176-1.24-6.165-3.495-8.412z" />
+        <path class="wa-fone" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.347-.347.52-.52.174-.174.232-.297.347-.495.115-.198.058-.371-.058-.52-.115-.148-.694-1.672-1.06-2.29-.286-.492-.577-.42-.795-.42h-.664c-.223 0-.521.083-.795.414-.273.332-1.03 1.006-1.03 2.45 0 1.445 1.056 2.84 1.204 3.03.148.189 2.04 3.113 4.943 4.367 3.345 1.444 3.913 1.157 4.617 1.088.704-.068 2.264-.925 2.582-1.82.317-.895.317-1.66.222-1.82-.094-.159-.297-.24-.495-.34z" />
+      </svg>
+    </a>
+  </div>
+</div>

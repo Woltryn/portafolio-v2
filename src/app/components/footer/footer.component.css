@@ -1,69 +1,85 @@
 .footer {
   background: var(--bg-primary);
   border-top: 1px solid var(--border);
-  padding: 40px 0;
+  padding: clamp(48px, 6vw, 72px) 0 clamp(36px, 4vw, 48px);
 }
 
 .footer-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  gap: clamp(16px, 2vw, 22px);
+  text-align: center;
 }
 
-.footer-logo {
-  font-size: 2rem;
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-name {
+  font-size: var(--fs-subtitle);
   font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
 }
 
-.footer-logo .accent {
-  color: var(--accent);
+.footer-text {
+  max-width: 64ch;
+  font-size: var(--fs-body-sm);
+  line-height: var(--line-body);
+  color: var(--text-secondary);
+  text-wrap: balance;
 }
 
-.footer-text {
-  font-size: 0.875rem;
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer-socials a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 0.95rem;
   color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.footer-socials a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-glow);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
+}
+
+.footer-divider {
+  width: min(440px, 100%);
+  height: 1px;
+  margin-top: 8px;
+  background: linear-gradient(90deg, transparent, var(--border-light), transparent);
 }
 
 .footer-copy {
-  font-size: 0.8rem;
+  font-size: var(--fs-small);
   color: var(--text-muted);
-  margin-top: 4px;
-}
-
-.scroll-top {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: var(--transition);
-  flex-shrink: 0;
-}
-
-.scroll-top:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: var(--accent-glow);
-  transform: translateY(-2px);
+  line-height: 1.6;
 }
 
 @media (max-width: 640px) {
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
+  .footer {
+    /* Keeps the floating actions from covering the copyright. */
+    padding-bottom: 168px;
   }
 
-  .footer-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 }

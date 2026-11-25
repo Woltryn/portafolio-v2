@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RevealDirective } from '../../reveal.directive';
+import { ScrollRevealDirective } from '../../scroll-reveal.directive';
 import { TiltCardDirective } from '../../tilt-card.directive';
 
 interface Education {
@@ -12,7 +12,7 @@ interface Education {
 @Component({
   selector: 'app-education',
   standalone: true,
-  imports: [RevealDirective, TiltCardDirective],
+  imports: [ScrollRevealDirective, TiltCardDirective],
   templateUrl: './education.component.html',
   styleUrl: './education.component.css'
 })

@@ -1,0 +1,44 @@
+// ==========================================================================
+// Scrollbar
+// The track follows --bg-primary, so it stays integrated with the active
+// theme (dark or light) without hardcoding a background color.
+// ==========================================================================
+
+$sb-cyan: #00f5ff;
+$sb-blue: #6366f1;
+$sb-violet: #a855f7;
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: var(--scrollbar-track, var(--bg-primary));
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: $sb-blue;
+  background-image: linear-gradient(180deg, $sb-cyan 0%, $sb-blue 50%, $sb-violet 100%);
+  border: none;
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #818cf8;
+  background-image: linear-gradient(180deg, #33f7ff 0%, #818cf8 50%, #c084fc 100%);
+  box-shadow: 0 0 6px rgba(99, 102, 241, 0.35);
+}
+
+// Firefox does not support gradient scrollbar thumbs. Keep a discreet solid
+// fallback while preserving the 6px-like thin width and the themed track.
+@supports (-moz-appearance: none) {
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: $sb-blue var(--scrollbar-track, var(--bg-primary));
+  }
+}

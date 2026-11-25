@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RevealDirective } from '../../reveal.directive';
+import { ScrollRevealDirective } from '../../scroll-reveal.directive';
 import { TiltCardDirective } from '../../tilt-card.directive';
 
 interface Skill {
@@ -16,7 +16,7 @@ interface SkillCategory {
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [RevealDirective, TiltCardDirective],
+  imports: [ScrollRevealDirective, TiltCardDirective],
   templateUrl: './skills.component.html',
   styleUrl: './skills.component.css'
 })

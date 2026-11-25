@@ -1,14 +1,14 @@
 <section class="skills" id="habilidades">
   <div class="container">
-    <div class="section-header" appReveal>
+    <div class="section-header" appScrollReveal="blur">
       <span class="section-tag">Stack Técnico</span>
       <h2 class="section-title">Habilidades Técnicas</h2>
       <p class="section-subtitle">Minhas principais tecnologias e ferramentas de trabalho</p>
     </div>
 
     <div class="skills-grid">
-      @for (category of categories; track category.title) {
-        <div class="skill-card" appReveal appTiltCard>
+      @for (category of categories; track category.title; let i = $index) {
+        <div class="skill-card" appScrollReveal="fade-up" [revealDelay]="i * 65" appTiltCard>
           <div class="skill-card-header">
             <div class="skill-icon">
               <i [class]="category.icon"></i>
@@ -17,7 +17,7 @@
           </div>
           <ul class="skill-list">
             @for (skill of category.skills; track skill.name; let idx = $index) {
-              <li class="skill-item" title="{{ skill.level }}" [style.animation-delay]="(idx * 40) + 'ms'">
+              <li class="skill-item" title="{{ skill.level }}" appScrollReveal="fade-up" [revealDelay]="(idx + 1) * 65">
                 <span class="skill-dot"></span>
                 <span class="skill-name">{{ skill.name }}</span>
               </li>

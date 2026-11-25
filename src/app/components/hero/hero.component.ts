@@ -1,13 +1,18 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { ScrollRevealDirective } from '../../scroll-reveal.directive';
+import { CV_URL, WHATSAPP_URL } from '../../data/site.data';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
+  imports: [ScrollRevealDirective],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
 export class HeroComponent implements AfterViewInit, OnDestroy {
   @ViewChild('typingText') typingText!: ElementRef<HTMLSpanElement>;
+  readonly whatsappUrl = WHATSAPP_URL;
+  readonly cvUrl = CV_URL;
 
   private phrases = [
     'Desenvolvedor Back-End Java',
@@ -21,6 +26,14 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
   private typingSpeed = 80;
 
   ngAfterViewInit() {
+    if (
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    ) {
+      this.typingText.nativeElement.textContent = this.phrases[0];
+      return;
+    }
+
     this.type();
   }
 

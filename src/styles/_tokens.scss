@@ -1,0 +1,121 @@
+// ==========================================================================
+// Design tokens
+// Single source of truth for colour, typography, spacing and radii.
+// Components consume them through CSS custom properties so the dark/light
+// themes (and every future language) stay visually consistent.
+// ==========================================================================
+
+// Typography ---------------------------------------------------------------
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+$line-body: 1.7;
+
+$fs-hero-name: clamp(2.5rem, 4.4vw, 3.5rem);          // 40px → 56px
+$fs-section-title: clamp(2.25rem, 3.6vw, 2.75rem);     // 36px → 44px
+$fs-subtitle: clamp(1.375rem, 2vw, 1.625rem);          // 22px → 26px
+$fs-body: clamp(1.0625rem, 1.15vw, 1.125rem);          // 17px → 18px
+$fs-body-sm: clamp(0.9375rem, 1vw, 1rem);              // 15px → 16px
+$fs-small: clamp(0.875rem, 0.9vw, 0.9375rem);          // 14px → 15px
+$fs-tag: clamp(0.875rem, 0.95vw, 0.9375rem);           // 14px → 15px
+$fs-overline: clamp(0.75rem, 0.8vw, 0.8125rem);        // 12px → 13px
+
+// Spacing ------------------------------------------------------------------
+$space-title-desc: clamp(20px, 1.6vw, 24px);
+$space-header-content: clamp(44px, 5vw, 64px);
+$space-card: clamp(20px, 2.2vw, 32px);
+$space-stack: clamp(16px, 1.8vw, 24px);
+$container-max: 1200px;
+$container-pad: clamp(16px, 4vw, 24px);
+
+// Radii & motion -----------------------------------------------------------
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+// Colour -------------------------------------------------------------------
+// Text tones are intentionally light enough to keep WCAG AA contrast on the
+// darkest card and page backgrounds at the same time.
+$bg-primary: #0a0a14;
+$bg-secondary: #111120;
+$bg-card: #17172b;
+$bg-card-hover: #1e1e38;
+$accent: #00d4aa;
+$accent-light: #33e0bc;
+$accent-dark: #00a885;
+$accent-glow: rgba(0, 212, 170, 0.15);
+$text-primary: #eef0f8;
+$text-secondary: #b4b8cc;
+$text-muted: #8f94ac;
+$border: #23233f;
+$border-light: #33335a;
+
+// Emit the CSS custom properties consumed by component styles --------------
+@mixin css-variables {
+  :root {
+    --font-sans: #{$font-sans};
+    --line-body: #{$line-body};
+
+    --fs-hero-name: #{$fs-hero-name};
+    --fs-section-title: #{$fs-section-title};
+    --fs-subtitle: #{$fs-subtitle};
+    --fs-body: #{$fs-body};
+    --fs-body-sm: #{$fs-body-sm};
+    --fs-small: #{$fs-small};
+    --fs-tag: #{$fs-tag};
+    --fs-overline: #{$fs-overline};
+
+    --space-title-desc: #{$space-title-desc};
+    --space-header-content: #{$space-header-content};
+    --space-card: #{$space-card};
+    --space-stack: #{$space-stack};
+    --space-section-y: clamp(96px, 8.5vw, 120px);
+    --container-max: #{$container-max};
+    --container-pad: #{$container-pad};
+
+    --bg-primary: #{$bg-primary};
+    --bg-secondary: #{$bg-secondary};
+    --bg-card: #{$bg-card};
+    --bg-card-hover: #{$bg-card-hover};
+    --accent: #{$accent};
+    --accent-light: #{$accent-light};
+    --accent-dark: #{$accent-dark};
+    --accent-glow: #{$accent-glow};
+    --text-primary: #{$text-primary};
+    --text-secondary: #{$text-secondary};
+    --text-muted: #{$text-muted};
+    --text-on-accent: #04120e;
+    --border: #{$border};
+    --border-light: #{$border-light};
+
+    --gradient-hero: linear-gradient(135deg, #0a0a14 0%, #111120 50%, #0d1a1a 100%);
+    --gradient-card: linear-gradient(150deg, #191930 0%, #121222 100%);
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-accent: 0 0 20px rgba(0, 212, 170, 0.2);
+
+    --radius-sm: #{$radius-sm};
+    --radius-md: #{$radius-md};
+    --radius-lg: #{$radius-lg};
+    --radius-xl: #{$radius-xl};
+    --transition: #{$transition};
+
+    /* Kept as a token so the scrollbar follows the active theme. */
+    --scrollbar-track: var(--bg-primary);
+  }
+
+  @media (max-width: 1024px) {
+    :root {
+      --space-section-y: clamp(72px, 9vw, 96px);
+    }
+  }
+
+  @media (max-width: 640px) {
+    :root {
+      --space-section-y: clamp(56px, 12vw, 72px);
+      --space-header-content: clamp(40px, 10vw, 48px);
+    }
+  }
+}

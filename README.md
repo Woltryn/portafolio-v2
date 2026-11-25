@@ -1,49 +1,55 @@
 # Portfólio — Jose A. Jimenez R.
 
-Portfólio profissional de Jose Antonio Jimenez Ramirez — Desenvolvedor Back-End Java especializado em Spring Boot, APIs REST e Microsserviços.
+Portfólio profissional de Jose Antonio Jimenez Rivero — Software Engineer com especialização em engenharia de software backend (Java, Spring Boot, APIs REST e microsserviços) e capacidades Full Stack com Angular.
 
 ## Stack
 
-- **Angular 19** (standalone components, control flow, signals)
+- **Angular 19** (componentes standalone, control flow, signals)
 - **TypeScript**
-- **CSS moderno** (CSS custom properties, Grid, Flexbox, `clamp()`)
+- **SCSS** (tokens, animações e scrollbar em `src/styles/`)
 - **Font Awesome 6** (ícones)
 - **Google Fonts — Inter**
 
 ## Estrutura
 
 ```
-src/app/
-├── components/
-│   ├── header/        → Navegação fixa + menu hambúrguer
-│   ├── hero/          → Apresentação principal
-│   ├── about/         → Sobre mim
-│   ├── skills/        → Habilidades técnicas
-│   ├── experience/    → Experiência profissional (timeline)
-│   ├── education/     → Formação acadêmica
-│   ├── contact/       → Contato + redes sociais
-│   └── footer/        → Rodapé
-├── reveal.directive.ts → Animação de entrada ao rolar (IntersectionObserver)
+src/
+├── app/
+│   ├── components/
+│   │   ├── header/           → Navegação fixa, menu mobile e spotlight hover
+│   │   ├── hero/             → Apresentação principal
+│   │   ├── about/            → Sobre mim + indicadores profissionais
+│   │   ├── skills/           → Habilidades técnicas
+│   │   ├── experience/       → Experiência profissional (timeline)
+│   │   ├── education/        → Formação acadêmica
+│   │   ├── contact/          → Contato + formulário + redes sociais
+│   │   ├── footer/           → Rodapé
+│   │   ├── scroll-progress/  → Barra de progresso de rolagem
+│   │   └── floating-actions/ → Voltar ao topo + WhatsApp
+│   ├── data/site.data.ts     → Links, contatos e URL do WhatsApp/CV
+│   ├── services/             → Envio do formulário (EmailJS)
+│   ├── scroll-reveal.directive.ts
+│   └── tilt-card.directive.ts
+└── styles/                   → Tokens, animações e scrollbar globais
 ```
 
 ## Seções
 
-- Header fixo com efeito blur ao rolar
-- Menu hambúrguer em mobile
+- Header fixo com blur ao rolar e menu hambúrguer em mobile
+- Animações de entrada ao rolar ( IntersectionObserver )
 - Timeline de experiência profissional
-- Badges de habilidades organizados por categoria
-- Animações de reveal ao fazer scroll
+- Badges de habilidades por categoria
+- Formulário de contato com EmailJS
 - Totalmente responsivo
 
 ## Comandos
 
 ```bash
-ng serve        # Dev server em http://localhost:4200
-ng build        # Build de produção em dist/portafolio-v2
+npm install     # Instalar dependências
+npm start       # Dev server em http://localhost:4200
+npm run build   # Build de produção em dist/portafolio-v2/browser
 ```
 
-## Melhorias futuras sugeridas
+## Deploy
 
-- Adicionar backend (ex.: Spring Boot) para envio real do formulário de contato
-- Trocar foto `foto-profissional.png` por versão otimizada (WebP)
-- Deploy automatizado via GitHub Actions (Vercel/Netlify/AWS)
+Deploy automático para **GitHub Pages** via `.github/workflows/deploy.yml`, disparado por push na branch `main`.

@@ -1,4 +1,5 @@
 import { Component, signal, HostListener } from '@angular/core';
+import { NAV_LINKS } from '../../data/site.data';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,7 @@ import { Component, signal, HostListener } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  readonly navLinks = NAV_LINKS;
   menuOpen = signal(false);
   scrolled = signal(false);
 

@@ -1,12 +1,26 @@
 <footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-content">
-      <span class="footer-logo">J<span class="accent">.</span></span>
-      <p class="footer-text">Jose A. Jimenez R. — Desenvolvedor Back-End Java</p>
-      <p class="footer-copy">© {{ year }} Jose A. Jimenez Rivero. Todos os direitos reservados.</p>
+  <div class="container footer-inner" appScrollReveal="fade-up">
+    <a class="footer-brand" href="#inicio" aria-label="Voltar ao início">
+      <span class="footer-name">Jose A. Jimenez R.</span>
+    </a>
+
+    <p class="footer-text">
+      Desenvolvedor Back-End Java · Spring&nbsp;Boot · APIs&nbsp;REST · Microsserviços
+    </p>
+
+    <div class="footer-socials">
+      @for (social of socials; track social.name) {
+        <a [href]="social.url"
+           target="_blank"
+           rel="noopener noreferrer"
+           [attr.aria-label]="social.name">
+          <i [class]="social.icon" aria-hidden="true"></i>
+        </a>
+      }
     </div>
-    <button class="scroll-top" (click)="scrollToTop()" aria-label="Voltar ao topo">
-      <i class="fas fa-arrow-up"></i>
-    </button>
+
+    <div class="footer-divider" aria-hidden="true"></div>
+
+    <p class="footer-copy">© {{ year }} Jose A. Jimenez Rivero. Todos os direitos reservados.</p>
   </div>
 </footer>

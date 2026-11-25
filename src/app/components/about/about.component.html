@@ -1,48 +1,27 @@
 <section class="about" id="sobre">
   <div class="container">
-    <div class="section-header" appReveal>
+    <div class="section-header" appScrollReveal="blur">
       <span class="section-tag">Quem sou eu</span>
       <h2 class="section-title">Sobre Mim</h2>
     </div>
 
     <div class="about-grid">
-      <div class="about-text" appReveal>
+      <div class="about-text" appScrollReveal="slide-left">
         <p class="about-lead">
-          Sou José Jiménez, <strong>Desenvolvedor Backend Java</strong> com experiência no desenvolvimento e manutenção de aplicações empresariais, especialmente em ambientes que envolvem <strong>Java</strong>, <strong>Spring Boot</strong>, APIs REST, microsserviços, bancos de dados e regras de negócio complexas.
+          Sou José Jiménez, <strong>Software Engineer | Full Stack Development</strong>, com experiência profissional no setor financeiro e na construção de soluções tecnológicas empresariais e comerciais.
         </p>
         <p>
-          Ao longo da minha trajetória, tenho trabalhado na construção e evolução de soluções backend, participando desde a análise e implementação de funcionalidades até testes, integração entre serviços, persistência de dados e resolução de problemas técnicos. Tenho experiência com tecnologias como Java, Spring Boot, Spring Data JPA, Hibernate, SQL, Oracle, PostgreSQL, Git, Maven, JUnit e Mockito, além de conhecimentos em Apache Kafka, Docker, AWS, CI/CD e Kubernetes.
+          Tenho experiência no desenvolvimento de arquiteturas de <strong>microsserviços</strong>, sistemas distribuídos, integração de aplicações e design de APIs com <strong>Java</strong> e <strong>Spring Boot</strong>, complementada pela criação de interfaces modernas, intuitivas e responsivas com <strong>Angular</strong> e outras tecnologias frontend.
         </p>
         <p>
-          Meu foco principal é o desenvolvimento backend, mas também venho ampliando minha atuação em frontend, utilizando <strong>Angular</strong> e TypeScript, buscando compreender cada vez melhor a integração entre as diferentes camadas de uma aplicação e a construção de soluções mais completas.
+          Minha visão de desenvolvimento de software abrange todo o ciclo de vida da aplicação: desde a análise de requisitos e do desenho arquitetural até a implementação de funcionalidades, segurança, gestão de bancos de dados, otimização, infraestrutura cloud e implantação em produção.
         </p>
-        <p>
-          Nos últimos tempos, também tenho direcionado parte dos meus estudos e projetos para <strong>Inteligência Artificial</strong> aplicada ao desenvolvimento de software, explorando LLMs, Prompt Engineering, RAG, agentes de IA e integração de modelos de linguagem com aplicações backend. Meu objetivo é entender não apenas como utilizar ferramentas de IA, mas como incorporá-las de forma prática e eficiente em sistemas reais.
+        <p class="about-profile">
+          Caracterizo-me pela capacidade analítica, autonomia técnica, adaptabilidade e resolução de problemas complexos, com foco em soluções seguras, escaláveis e de fácil manutenção, que geram valor real para o negócio.
         </p>
-        <p>
-          Tenho como objetivo continuar evoluindo tecnicamente, aprofundando meus conhecimentos em arquitetura de software, sistemas distribuídos, cloud, mensageria, observabilidade, segurança e engenharia de software, assumindo gradualmente desafios de maior complexidade e responsabilidade técnica.
-        </p>
-        <p class="about-cta">
-          Atualmente, estou aberto a novas oportunidades como <strong>Desenvolvedor Backend Java / Java Pleno</strong>, especialmente em ambientes que utilizem Java, Spring Boot, microsserviços, APIs REST, cloud e sistemas distribuídos.
-        </p>
-
-        <div class="about-highlights">
-          <div class="highlight" appTiltCard>
-            <span class="highlight-number">+3</span>
-            <span class="highlight-label">Anos de Experiência</span>
-          </div>
-          <div class="highlight" appTiltCard>
-            <span class="highlight-number">28%</span>
-            <span class="highlight-label">Redução de Latência</span>
-          </div>
-          <div class="highlight" appTiltCard>
-            <span class="highlight-number">2</span>
-            <span class="highlight-label">Empresas</span>
-          </div>
-        </div>
       </div>
 
-      <div class="about-details" appReveal>
+      <div class="about-details" appScrollReveal="slide-right">
         <div class="detail-card">
           <i class="fas fa-map-marker-alt"></i>
           <div>
@@ -72,6 +51,23 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="achievement-grid" role="list" aria-label="Indicadores profissionais">
+      @for (achievement of achievements; track achievement.title; let i = $index) {
+        <article class="achievement-card"
+                 role="listitem"
+                 appScrollReveal="fade-up"
+                 [revealDelay]="i * 80"
+                 appTiltCard>
+          <span class="achievement-icon" aria-hidden="true">
+            <i [class]="achievement.icon"></i>
+          </span>
+          <h3 class="achievement-title">{{ achievement.title }}</h3>
+          <p class="achievement-subtitle">{{ achievement.subtitle }}</p>
+          <p class="achievement-description">{{ achievement.description }}</p>
+        </article>
+      }
     </div>
   </div>
 </section>
