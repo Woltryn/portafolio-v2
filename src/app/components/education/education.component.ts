@@ -9,6 +9,12 @@ interface Education {
   type: string;
 }
 
+interface OngoingStudy {
+  title: string;
+  description: string;
+  period: string;
+}
+
 @Component({
   selector: 'app-education',
   standalone: true,
@@ -37,10 +43,35 @@ export class EducationComponent {
       type: 'Certificação'
     },
     {
-      school: 'Instituto Universitário de Tecnologia Aplicada (IUTA)',
-      course: 'Tecnólogo em Instrumentação / Eletrônica Industrial',
+      school: 'Oracle',
+      course: 'Java SE Advanced',
+      period: '2023',
+      type: 'Certificação'
+    },
+    {
+      school: 'Amazon Web Services (AWS)',
+      course: 'AWS Certified Cloud Practitioner',
+      period: '2024',
+      type: 'Certificação'
+    },
+    {
+      school: 'IUTA',
+      course: 'Técnico em Instrumentação / Eletrônica Industrial',
       period: '2013 — 2016',
       type: 'Graduação'
+    }
+  ];
+
+  ongoingStudies: OngoingStudy[] = [
+    {
+      title: 'Arquitetura de Software e Sistemas Distribuídos',
+      description: 'Estudo autodidata contínuo',
+      period: '2025 — Atual'
+    },
+    {
+      title: 'Inteligência Artificial Aplicada a Backend',
+      description: 'LLMs, RAG, Prompt Engineering, Agentes Automáticos e integração de modelos de linguagem com aplicações Java',
+      period: '2025 — Atual'
     }
   ];
 }
